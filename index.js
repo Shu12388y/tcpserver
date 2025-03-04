@@ -1,12 +1,12 @@
-const net = require('node:net');
-
-const server = net.createServer((socket)=>{
-    console.log('connected')
-    // receive the data
-    socket.on('data',(chunck)=>{
-        console.log(chunck.toString())
-    })
-});
+const TCPServer = require('./tcp.js');
 
 
-server.listen(8081)
+const server = new TCPServer();
+
+
+server.receive((data)=>{
+console.log(data)
+})
+
+
+server.createServer(8081)
